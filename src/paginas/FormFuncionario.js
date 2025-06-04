@@ -28,7 +28,7 @@ export default function FormFuncionario() {
 
     const inserir = async () => {
         let body = {
-            "nomefunionario": nomefuncionario
+            "nomefuncionario": nomefuncionario
         };
 
         await axios.post(`http://localhost:4000/funcionario`, body);
@@ -57,7 +57,7 @@ export default function FormFuncionario() {
 
     return (
         <>
-            <TituloFuncionario id={id} titulo="funcionario" />
+            <TituloCadastro id={id} titulo="funcionario" />
 
             <form>
                 {id && (

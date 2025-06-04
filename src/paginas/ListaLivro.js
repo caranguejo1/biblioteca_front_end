@@ -2,7 +2,7 @@ import TituloLista from "../componentes/TituloLista";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-export default function listaLivro() {
+export default function ListaLivro() {
     //Declarando uma variável useState
     const [dados, setDados] = useState([]);
 

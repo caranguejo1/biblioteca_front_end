@@ -57,7 +57,7 @@ export default function FormLivro() {
 
     return (
         <>
-            <TituloLivro id={id} titulo="livro" />
+            <TituloCadastro id={id} titulo="livro" />
 
             <form>
                 {id && (

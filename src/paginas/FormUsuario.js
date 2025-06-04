@@ -6,7 +6,7 @@ import TituloCadastro from "../componentes/TituloCadastro";
 export default function FormUsuario() {
     const navegacao = useNavigate();
     const { id } = useParams();
-    const [nomecategoria, setNomeUsuario] = useState('');
+    const [nomeusuario, setNomeUsuario] = useState('');
 
     const voltar = () => {
         navegacao('/listausuario');
@@ -57,7 +57,7 @@ export default function FormUsuario() {
 
     return (
         <>
-            <TituloUsuario id={id} titulo="usuario" />
+            <TituloCadastro id={id} titulo="usuario" />
 
             <form>
                 {id && (

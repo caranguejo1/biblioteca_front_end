@@ -57,7 +57,7 @@ export default function FormEditora() {
 
     return (
         <>
-            <TituloEditora id={id} titulo="editora" />
+            <TituloCadastro id={id} titulo="editora" />
 
             <form>
                 {id && (
@@ -81,7 +81,7 @@ export default function FormEditora() {
                         type="text"
                         className="form-control"
                         value={nomeeditora}
-                        onChange={(evento) => setNomeCategoria(evento.target.value)}
+                        onChange={(evento) => setNomeEditora(evento.target.value)}
                     />
                 </div>
                 <button type="button" className="btn btn-primary"
