@@ -7,6 +7,7 @@ export default function FormEditora() {
     const navegacao = useNavigate();
     const { id } = useParams();
     const [nomeeditora, setNomeEditora] = useState('');
+    const [cnpj, setCnpj] = useState('');
 
     const voltar = () => {
         navegacao('/listaeditora');
@@ -15,11 +16,14 @@ export default function FormEditora() {
     const selecionar = async () => {
         let { data } = await axios.get(`http://localhost:4000/editora/${id}`);
         setNomeEditora(data.nomeeditora);
+        setCnpj(data.cnpj);
     }
 
     const alterar = async () => {
         let body = {
-            "nomeeditora": nomeeditora
+            "nomeeditora": nomeeditora,
+            "cnpj": cnpj
+
         };
 
         await axios.put(`http://localhost:4000/editora/${id}`, body);
@@ -28,10 +32,12 @@ export default function FormEditora() {
 
     const inserir = async () => {
         let body = {
-            "nomeeditora": nomeeditora
+            "nomeeditora": nomeeditora,
+            "cnpj": cnpj
         };
 
-        await axios.post(`http://localhost:4000/editora`, body);
+        const response = await axios.post(`http://localhost:4000/editora`, body);
+        console.log(response.data);
         voltar();
     }
 
@@ -82,6 +88,17 @@ export default function FormEditora() {
                         className="form-control"
                         value={nomeeditora}
                         onChange={(evento) => setNomeEditora(evento.target.value)}
+                    />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label">
+                        CNPJ
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={cnpj}
+                        onChange={(evento) => setCnpj(evento.target.value)}
                     />
                 </div>
                 <button type="button" className="btn btn-primary"

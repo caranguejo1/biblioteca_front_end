@@ -6,7 +6,9 @@ import TituloCadastro from "../componentes/TituloCadastro";
 export default function FormLivro() {
     const navegacao = useNavigate();
     const { id } = useParams();
-    const [nomelivro, setNomeLivro] = useState('');
+    const [titulo, settitulo] = useState('');
+    const [ideditora, setIdEditora] = useState('');
+    const [idcategoria, setIdCategoria] = useState('');
 
     const voltar = () => {
         navegacao('/listalivro');
@@ -14,12 +16,16 @@ export default function FormLivro() {
 
     const selecionar = async () => {
         let { data } = await axios.get(`http://localhost:4000/livro/${id}`);
-        setNomeLivro(data.nomelivro);
+        settitulo(data.titulo);
+        setIdEditora(data.ideditora || '');
+        setIdCategoria(data.idcategoria || '');
     }
 
     const alterar = async () => {
         let body = {
-            "nomelivro": nomelivro
+            "titulo": titulo,
+            "ideditora": ideditora,
+            "idcategoria": idcategoria
         };
 
         await axios.put(`http://localhost:4000/livro/${id}`, body);
@@ -28,14 +34,19 @@ export default function FormLivro() {
 
     const inserir = async () => {
         let body = {
-            "nomelivro": nomelivro
+            "titulo": titulo,
+            "ideditora": ideditora,
+            "idcategoria": idcategoria
         };
+
+        console.log(body);
 
         await axios.post(`http://localhost:4000/livro`, body);
         voltar();
     }
 
     const salvar = async () => {
+
         if (id) {
             alterar();
         }
@@ -69,6 +80,7 @@ export default function FormLivro() {
                             type="text"
                             className="form-control"
                             value={id}
+                            readOnly
                         />
                     </div>
                 )}
@@ -80,10 +92,35 @@ export default function FormLivro() {
                     <input
                         type="text"
                         className="form-control"
-                        value={nomelivro}
-                        onChange={(evento) => setNomeLivro(evento.target.value)}
+                        value={titulo}
+                        onChange={(evento) => settitulo(evento.target.value)}
                     />
                 </div>
+
+                <div className="mb-3">
+                    <label className="form-label">
+                        ID Editora
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={ideditora}
+                        onChange={(evento) => setIdEditora(evento.target.value)}
+                    />
+                </div>
+
+                <div className="mb-3">
+                    <label className="form-label">
+                        ID Categoria
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={idcategoria}
+                        onChange={(evento) => setIdCategoria(evento.target.value)}
+                    />
+                </div>
+
                 <button type="button" className="btn btn-primary"
                     onClick={() => salvar()}>
                     Salvar

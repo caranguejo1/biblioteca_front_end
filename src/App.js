@@ -28,9 +28,9 @@ function App() {
             <Route path='/cadastrocategoria' element={<FormCategoria />} />
             <Route path='/cadastrocategoria/:id' element={<FormCategoria />} />
             
-            <Route path='/listaeditora' element={<ListaCategoria />} />
-            <Route path='/cadastroeditora' element={<FormCategoria />} />
-            <Route path='/cadastroeditora/:id' element={<FormCategoria />} />
+            <Route path='/listaeditora' element={<ListaEditora />} />
+            <Route path='/cadastroeditora' element={<FormEditora />} />
+            <Route path='/cadastroeditora/:id' element={<FormEditora />} />
 
             <Route path='/listaautor' element={<ListaAutor />} />
             <Route path='/cadastroautor' element={<FormAutor />} />
